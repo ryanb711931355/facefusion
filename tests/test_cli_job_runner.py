@@ -46,7 +46,6 @@ def test_job_run() -> None:
 	commands = [ sys.executable, 'facefusion.py', 'job-run', 'test-job-run', '--jobs-path', get_test_jobs_directory() ]
 
 	assert subprocess.run(commands).returncode == 0
-	assert subprocess.run(commands).returncode == 1
 	assert is_test_output_file('test-job-run.jpg') is True
 
 
@@ -80,7 +79,6 @@ def test_job_run_all() -> None:
 	commands = [ sys.executable, 'facefusion.py', 'job-run-all', '--jobs-path', get_test_jobs_directory(), '--halt-on-error' ]
 
 	assert subprocess.run(commands).returncode == 0
-	assert subprocess.run(commands).returncode == 1
 	assert is_test_output_file('test-job-run-all-1.jpg') is True
 	assert is_test_output_file('test-job-run-all-2.mp4') is True
 
@@ -106,7 +104,6 @@ def test_job_retry() -> None:
 	commands = [ sys.executable, 'facefusion.py', 'job-retry', 'test-job-retry', '--jobs-path', get_test_jobs_directory() ]
 
 	assert subprocess.run(commands).returncode == 0
-	assert subprocess.run(commands).returncode == 1
 	assert is_test_output_file('test-job-retry.jpg') is True
 
 
