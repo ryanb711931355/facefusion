@@ -21,6 +21,8 @@ def conditional_process_temp_frame(temp_frame_path : str, frame_number : int, ou
 	source_vision_frames = read_static_images(state_manager.get_item('source_paths'))
 	source_audio_path = get_first(filter_audio_paths(state_manager.get_item('source_paths')))
 	target_vision_frame = read_static_image(temp_frame_path, 'rgba')
+	if target_vision_frame is None:
+		raise ValueError(f'Target frame is missing or corrupt: {temp_frame_path}')
 	temp_vision_frame = target_vision_frame.copy()
 	temp_vision_mask = extract_vision_mask(temp_vision_frame)
 
