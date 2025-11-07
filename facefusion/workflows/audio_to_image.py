@@ -64,8 +64,8 @@ def prepare_image() -> ErrorCode:
 
 def process_frames() -> ErrorCode:
 	source_audio_path = get_first(filter_audio_paths(state_manager.get_item('source_paths')))
-	audio_frame_total = count_audio_frame_total(source_audio_path, 25.0)
 	output_video_fps = state_manager.get_item('output_video_fps')
+	audio_frame_total = count_audio_frame_total(source_audio_path, output_video_fps)
 	temp_frame_paths = get_temp_frame_sequence_paths(state_manager.get_item('target_path'), audio_frame_total, '%08d')
 
 	if temp_frame_paths:
